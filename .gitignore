@@ -1,0 +1,47 @@
+# Personal files (local only)
+ROADMAP.md
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+
+# Environment variables (NEVER commit API keys)
+.env
+.env.local
+.env.*.local
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+
+# Data files (usually too large for git)
+*.csv
+*.parquet
+*.pkl
+*.pickle
+
+# Model weights (too large)
+*.bin
+*.safetensors
+*.pt
+*.pth
+
+# Logs
+*.log
+logs/

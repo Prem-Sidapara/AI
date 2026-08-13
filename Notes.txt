@@ -1,0 +1,85 @@
+
+Class: 
+
+A class is a blueprint for creating objects -- things that have both data (attributes) and 
+behaviour (moethods). A function is just one piece of behaviour.
+
+__init__ = runs AUTOMATICALLY when an object is created (instantiated).
+           You don't call it — Python calls it for you.
+           This is where attributes (self.x = ...) are set.
+
+self:
+
+  Formal definition:
+  "self is a reference to the current instance of the class"
+
+  Simple definition:
+  "self = jo box abhi active hai, usi ka naam/pointer"
+  or 
+  "self ek name/pointer hai us specific box ke liye jo abhi is waqt active hai -
+  chahe wo ban raha ho (__init__) ya to koi method call kar raha ho"
+
+  In __init__:
+    self = naya bana hua box (jo abhi store ho raha hai)
+
+  In any method:
+    self = jo bhi object ne method call kiya
+    Example: my_dog.describe()  →  self = my_dog ka box
+             my_dog2.describe() →  self = my_dog2 ka box
+
+  Key rule:
+    Jo bhi [.]  ke LEFT SIDE pe hota hai — wahi self ban jaata hai method ke andar.
+    [object] . [method]()
+       ↓
+      self
+
+  self aur my_dog same address kyun?
+    Because they are TWO NAMES for the SAME box — jaise b = a mein b aur a same hote hain.
+    Naya box nahi banta — sirf ek aur naam usi box pe lag jaata hai.
+
+  Every method inside a class MUST have self as first parameter.
+  Python automatically pass karta hai — tune kabhi manually nahi pass kiya.
+
+----------------------------------------------------------------------
+PROCESS: Jab my_dog = Dog("brunno", "labra") likhte ho — kya hota hai?
+----------------------------------------------------------------------
+
+  Step 1: Python dekha → "Dog class hai" → memory mein ek NAYA EMPTY BOX banaya
+          Box ka address: 534544 (koi bhi number ho sakta hai)
+          Box andar se: [empty]
+
+  Step 2: Python ne AUTOMATICALLY __init__ call kiya
+          __init__(self=box_534544, name="brunno", breed="labra")
+          self = woh naya empty box (address 534544)
+
+  Step 3: __init__ ke andar line by line chali:
+          self.name = "brunno"  →  box 534544 mein name:"brunno" daala
+          self.breed = "labra"  →  box 534544 mein breed:"labra" daala
+          Box ab: [name:"brunno", breed:"labra"]
+
+  Step 4: __init__ khatam. self ka kaam khatam. self gone.
+          Filled box "my_dog" variable mein save ho gaya.
+          my_dog → box 534544 [name:"brunno", breed:"labra"]
+
+  Step 5: Jab my_dog.describe() call hota hai:
+          Python dekhta hai: "my_dog ne describe() call kiya"
+          self = my_dog (jo bhi left side pe tha)
+          self.name → my_dog ke box se "brunno" nikala
+
+  Step 6: Doosra object banana:
+          my_dog2 = Dog("tommy", "labra")
+          → NAYA box bana (address: 534864) → ALAG box
+          → self ab 534864 tha (534544 nahi)
+          → my_dog aur my_dog2 dono ALAG boxes hain memory mein
+
+KEY INSIGHT:
+  class   = blueprint (sirf rules, koi box nahi)
+  object  = ek real box in memory with actual data
+  __init__ = jo code box banana ke waqt automatically chalta hai
+  self    = us box ka temporary naam (sirf method ke andar)
+  my_dog  = us same box ka permanent naam (bahar ke liye)
+
+
+
+@dataclass = decorator hai 
+                __inti__ and __repr__ automatic bana deta hai 
