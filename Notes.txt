@@ -83,3 +83,60 @@ KEY INSIGHT:
 
 @dataclass = decorator hai 
                 __inti__ and __repr__ automatic bana deta hai 
+
+----------------------------------------------------------------------
+ASYNC PYTHON
+----------------------------------------------------------------------
+
+WHY ASYNC?
+  Sync: ek ke baad ek — 10 users × 1 sec = 10 seconds
+  Async: sab ek saath — 10 users × 1 sec = 1 second
+  
+  Kab use karo: jab network wait ho (API calls, database, file read)
+  Kab mat karo: heavy CPU calculation mein (async wahan help nahi karta)
+
+KEYWORDS:
+
+  async def  = "ye function await use kar sakta hai"
+               async def get_joke() -> str:
+
+  await      = "yahaan wait karo, par doosre tasks mat roko"
+               response = await client.get(url)
+               Without await: blocking — sab ruk jaata hai
+               With await: Python doosra kaam karta hai wait ke dauran
+
+  asyncio.gather()  = "ye sab ek saath chalao"
+               results = await asyncio.gather(task1(), task2(), task3())
+               Shortcut for many tasks: *[func(i) for i in range(10)]
+
+  asyncio.run()  = "async world mein ghuso" — sirf ek baar, sabse bahar
+               asyncio.run(main())
+
+  async with  = context manager jo automatically resource close karta hai
+               async with httpx.AsyncClient() as client:
+
+HTTPX — Async HTTP Client:
+  import httpx
+  async with httpx.AsyncClient(headers={...}) as client:
+      response = await client.get(url, timeout=5.0)
+      response.raise_for_status()   # 4xx/5xx pe error throw karo
+      data = response.json()
+
+ERROR HANDLING in async:
+  try:
+      response = await client.get(url, timeout=5.0)
+      response.raise_for_status()
+  except httpx.TimeoutException:    # request time limit cross kiya
+      return "timeout error"
+  except httpx.HTTPStatusError as e:  # 404, 500 etc
+      return f"HTTP error: {e.response.status_code}"
+  except Exception as e:            # koi bhi unexpected error
+      return f"Unknown error: {str(e)}"
+
+REAL AI USE:
+  Har OpenAI/Anthropic/Gemini API call = network wait
+  await use karo → ek saath 100 users handle kar sakte ho
+  async def ask_gpt(question: str) -> str:
+      response = await client.chat.completions.create(...)
+      return response.choices[0].message.content
+
