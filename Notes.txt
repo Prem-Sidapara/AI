@@ -139,4 +139,26 @@ REAL AI USE:
   async def ask_gpt(question: str) -> str:
       response = await client.chat.completions.create(...)
       return response.choices[0].message.content
-
+
+
+
+
+
+Numpy in Ai ? 
+because it is built in C internally
+it is fast as C speed
+it is faster than list 2
+
+
+dot product = how much simiar two vectors 
+but dot product me ek problem hai 
+vector ka size ( lenghth) affect karta hai score 
+
+cosine similarity usko normalize karta hai 
+np.linalg.norm(a) = vector ki length (magnitude)
+
+0 to 1 
+1 = identical 
+0 = completely different
+
+1536 dimentions hote hai 
