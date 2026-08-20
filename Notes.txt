@@ -162,3 +162,25 @@ np.linalg.norm(a) = vector ki length (magnitude)
 0 = completely different
 
 1536 dimentions hote hai 
+
+
+
+
+
+
+GRADIENT DESCENT 
+
+Matlab model mistake karke usko fix karke improve karta hai 
+taaki aur mistake naa ho 
+
+loss = kitna mistake hai 
+m = model ka setting 
+isi ko change karte hai 
+
+apoch = kitni maar model mistake ko fix karta hai ( rounds )
+learning rate = model kitna speed se mistake ko fix karta hai 
+
+gradient = slope of loss 
+yaani ki kis direction me chale to loss badhega ya ghatega 
+ham always slopeke against vaali direction jaate hai
+kyuki loss ko kam karna hai jitna ho sake 
