@@ -184,3 +184,106 @@ gradient = slope of loss
 yaani ki kis direction me chale to loss badhega ya ghatega 
 ham always slopeke against vaali direction jaate hai
 kyuki loss ko kam karna hai jitna ho sake 
+
+
+
+
+.reshape(-1, 1) 
+sklearn ko data column format me chahiye 
+-1 matlab raw ka automatic count karta hai 
+1 matlab 1 column 
+
+(1,-1) matlab 1 raw aur columns automatic count karle 
+(2, -1) matlab 2 raw aur columns automatic count karle 
+(-1, 4) matlab 4 columns aur raw automatic count karle 
+
+isse 2D milta hai 
+
+
+
+
+coef_ matlab coefficients 
+= weigths = m 
+
+
+incercept_ matlab graph pe line Y-axix ko kaha kaatti hai 
+
+y = 5 * hours + 48
+x = 0 hours => y = 48 
+
+this is bias 
+and this is incercept_ 
+
+both is same 
+
+incercept means bias 
+
+
+
+
+MAE means mean of absolute erros 
+this is not avrage of lossess 
+becasue in gradient decsent losses = ( actual - predicted )square 
+and in the MAE = actual - predicted erros ka average ( not squared ) 
+
+MAE = average error in original units 
+
+
+
+
+
+
+
+
+
+
+
+train test split 
+mujhe ye already pata hai 
+
+80% ko train kiya 
+20% pe test kiya  
+
+X= inputs  
+y = outputs
+
+ye original data hai 
+
+ab X inputs me se 80% jo hai vo hoga X_train 
+aur y outuputs me 80% jo hai vo hoga Y_train 
+
+aur 
+
+x me baaki bacha 20% jo hai vo X_test 
+y me baaki bacha 20% jo hai vo Y_test 
+
+
+ham jo hai vo X_train aur Y_train ko model ko denge 
+vo gradient descent karega internally 
+aur m aur b ko imrpove karega 
+
+ab ham predict karenge 
+
+X_test denge 
+Y_test actual values hai jo already hamare pass hai 
+
+model answer predict karega 
+usko Y_test jo already hamare pass hai 
+uske sath compare karega 
+
+R² aur MAE se 
+
+
+
+
+
+
+
+Y = mX + b 
+
+isse m aur b find kiya jaata hai aur usko optimize kiya jata hai 
+taaki minimum loss aaye   
+
+ye chiz .fit() ke time hoti hai 
+
+ab predict ke time pe Y = mX + b me values put karke output milta hai 
