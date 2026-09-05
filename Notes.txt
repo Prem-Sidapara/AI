@@ -287,3 +287,32 @@ taaki minimum loss aaye
 ye chiz .fit() ke time hoti hai 
 
 ab predict ke time pe Y = mX + b me values put karke output milta hai 
+
+
+
+
+
+
+
+JUst for notes 
+
+AI -> MAchiens jo intellignet kaam kare 
+      ( chess palying, image recognition, chatbots)
+
+ML -> AI ka ek subset 
+      data se pattern seekhna - gradient descent
+      "Expilicitly program mat karo, data se seekhne do"
+
+DL -> ML ka ek subset 
+      neural metworks use karta hai
+      bahut saare layers -> "deep" learning
+
+LLM -> DL ka ek subset
+       text pe trained, massive sclae 
+       GPT, gemini, claude = LLMs
+
+    
+AI 
+\______ ML ( mene kiya - gradient descent , scikit-learn )
+         \______DL ( neural netowrk, pytorch)
+                 \______ LLM ( open AI , real chatbots )
