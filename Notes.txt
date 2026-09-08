@@ -316,3 +316,89 @@ AI
 \______ ML ( mene kiya - gradient descent , scikit-learn )
          \______DL ( neural netowrk, pytorch)
                  \______ LLM ( open AI , real chatbots )
+
+
+
+
+
+
+Pytorch vs Scikit-learn
+
+scikit-learn - ready made models 
+                models.fit() -> done 
+                Simple Ml ke liye 
+
+PyTorch -> building blocks deta hai 
+            me khud neural network banata hu 
+            Research + production AI ke liye 
+            GPT, stable diffusion - sab pytorch me bane hai 
+
+
+
+
+
+Tensor = Numpy aaray + GPU support + gradient tracking 
+
+numpy_array = np.array([1,2,3])   CPU only, gradient nahi 
+torch_tensor = torch.tensor([1,2,3])    GPU pe ja sakta hai + gradient track karta hai  
+
+Gradient tracking = model sikhta kaise hai 
+ye wahi hai jo mene manuaally kiya tha 20 Aug ko
+
+score = m * hours + b
+predictions = m * hours + b  
+
+neural netowrk = bohot saare m aur b ek ke baad ek 
+Input -> [ m1 *x + b1] -> [m2 *x + b2] -> [m3 *x + b3] -> output 
+          layer 1         layer 2         layer 3     
+
+har layer uske pehle layer ki output leti hai 
+is tarah complex pattern seekh sakta hai 
+jo simple y = mx + b nahi sikh sakta 
+
+GPT-4 = bohot saari layers * bohot sare m aur b = 1.8 trillion parameters
+
+
+
+# NumPy — sirf ek kaam karta hai: math
+a = np.array([1.0, 2.0, 3.0])
+
+# PyTorch tensor — 3 kaam karta hai:
+t = torch.tensor([1.0, 2.0, 3.0])
+# 1. Math (same as numpy) ✅
+# 2. GPU pe bhejna ✅ → t.cuda()
+# 3. Gradient yaad rakhna ✅ → requires_grad=True
+
+
+
+gradient yaad rakhta hai 
+mene manually likha tha 
+gradient_m = (2/n) * np.sum((predictions - scores) * hours)
+m = m - learning_rate * gradient_m
+
+pytorch khud se karta hai ye 
+loss.backward() bolke 
+
+
+GPU pe chalta hai ka kya matlab hua ? 
+
+CPU = Computer ka main processor (Intel, AMD)
+
+8-16 cores
+Ek complex kaam bahut achi tarah karta hai
+Sequential tasks ke liye best
+GPU = Graphics card ka processor (NVIDIA, AMD)
+
+Thousands of cores (RTX 3080 = 8704 cores!)
+Ek ek core simple hai, par sab ek saath kaam karte hain
+Parallel math ke liye best
+
+Neural Network Mein Kyun GPU?
+Neural network training = millions of small multiplications ek saath.
+
+Layer ka ek step:
+[1000 inputs] × [weights matrix 1000×3072] = result
+= 30 LAKH multiplications ek baar mein
+CPU pe: 16 cores → thoda thoda karke → slow GPU pe: 8704 cores → sab ek saath → 100x faster
+
+GPT-4 training mein thousands of NVIDIA A100 GPUs use hue — 3 months ke liye non-stop.
