@@ -402,3 +402,32 @@ Layer ka ek step:
 CPU pe: 16 cores → thoda thoda karke → slow GPU pe: 8704 cores → sab ek saath → 100x faster
 
 GPT-4 training mein thousands of NVIDIA A100 GPUs use hue — 3 months ke liye non-stop.
+
+
+
+
+AUTOGRAD
+requires_grad=True → "is tensor ka gradient track karo"
+loss.backward() → PyTorch khud gradient calculate karta hai
+ye wahi kaam hai jo maine manually kiya tha pehle 
+
+gradient_m = (2/n) * np.sum(...)  ← manual formula
+loss.backward()                   ← PyTorch ka automatic
+
+
+TRAINING LOOP PATTERN — ye hamesha same rahega
+optimizer.zero_grad()   # purana gradient clear karo
+loss.backward()         # gradient calculate karo
+optimizer.step()        # weights update karo
+
+
+NEURAL NETWORK (nn.Module)
+nn.Linear(1, 8)   → 1 input, 8 neurons output (8 weights + 8 biases = 16 parameters)
+nn.ReLU()         → negative → 0, positive → as-is (bina iske sirf y=mx+b hoga)
+nn.Linear(8, 1)   → 8 input, 1 output
+
+ReLU ke bina neural network complex patterns nahi seekh sakta
+ReLU = "non-linearity" jo model ko power deti hai
+
+Adam optimizer = smart gradient descent
+learning rate khud adjust karta hai (regular gradient descent se better)
