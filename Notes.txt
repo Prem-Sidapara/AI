@@ -411,7 +411,8 @@ requires_grad=True → "is tensor ka gradient track karo"
 loss.backward() → PyTorch khud gradient calculate karta hai
 ye wahi kaam hai jo maine manually kiya tha pehle 
 
-gradient_m = (2/n) * np.sum(...)  ← manual formula
+gradient_m = (2/n) * np.sum(...)  ← 
+manual formula
 loss.backward()                   ← PyTorch ka automatic
 
 
@@ -431,3 +432,19 @@ ReLU = "non-linearity" jo model ko power deti hai
 
 Adam optimizer = smart gradient descent
 learning rate khud adjust karta hai (regular gradient descent se better)
+
+
+BCELoss = Binary Cross Entropy Loss
+yes/no problems ke liye (malignant/benign, pass/fail, spam/not spam)
+MSELoss = regression ke liye (salary, score predict karna)
+
+nn.Sigmoid() = output 0 to 1 ke beech laata hai (probability)
+0.5 se zyada → 1 (yes), 0.5 se kam → 0 (no)
+
+StandardScaler = features ko same scale pe laata hai
+bina iske neural network properly nahi seekhta
+kyunki ek feature 1000s mein ho aur doosra 0.001 mein → imbalance
+
+Cancer Classifier result: 96.5% accuracy
+30 features → 2 classes (malignant/benign)
+Real medical data pe neural network doctors se better
