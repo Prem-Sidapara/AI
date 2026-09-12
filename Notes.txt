@@ -339,7 +339,7 @@ PyTorch -> building blocks deta hai
 
 Tensor = Numpy aaray + GPU support + gradient tracking 
 
-numpy_array = np.array([1,2,3])   CPU only, gradient nahi 
+numpy_array = np.array([1,2,3])   CPU only, gradient tracking nahi 
 torch_tensor = torch.tensor([1,2,3])    GPU pe ja sakta hai + gradient track karta hai  
 
 Gradient tracking = model sikhta kaise hai 
@@ -448,3 +448,49 @@ kyunki ek feature 1000s mein ho aur doosra 0.001 mein → imbalance
 Cancer Classifier result: 96.5% accuracy
 30 features → 2 classes (malignant/benign)
 Real medical data pe neural network doctors se better
+
+
+
+
+1. Gradient descent 
+->  loss ko minimize karne ke liye , gradient (slope of loss) calculate
+    karo -> opposite direction mein m aur b ko thoda adjust karo -> repeat. 
+    har round mein loss thoda kam hota hai.
+    opposite direction isiliye kyuki loss ghatana hai , gradient loss badhne 
+    ki direction batata hai
+
+2. Neural network aur simple y=mx+b mein kya fark hai?
+->  Neural network me bohot saari layers hoti hai bohot sare parameteres hote hai 
+    jabki y=mx+b ek simple linear function hai 
+    lekin sirf multiple layers hone se koi extra benifit nahi milta 
+    agar activation function jaise ReLU use naa karo 
+    to multiple layers bhi y=mx+b ke equivalent ho sakti hai 
+    ReLU non linearity introduce karta hai 
+    isi ki wajah se network complex pattern seekh sakta hai 
+    jo straight line nahi seekh sakti
+
+3. Training loop mein ye 3 lines kyu hain — order kyu yahi hai?
+optimizer.zero_grad()
+loss.backward()
+optimizer.step()
+->  ye teeno chiz ek order me hai 
+    reset -> calculate -> apply 
+    optimizer.zero_grad() =  gradient ko reset karta hai 
+                              kyuki pytorch gradient accumulate karta hai 
+                              purana gradient hata do warna galat result 
+    loss.backward() = gradient calculate karta hai 
+                      parameteres abhi update nahi hue 
+                      sirf "kitna adjust karna hai" vo figure our karta hai 
+    optimizer.step() = ab parameteres (m,b) actually update hote hai 
+                        gradient use karke adjust karo 
+    backward() sirf math karta hai 
+    actual change step() karta hai 
+           
+4. Tensor aur NumPy array mein fark
+->  tensor gradient automatically track karta hai autograd se 
+    numpy nahi karta 
+    loss.backward() tensor pe hi kaam karta hai 
+    numpy pe nahi 
+    tensor GPU pe chal sakta hai 
+    numpy nahi vo sirf normal CPU ke liye 
+
