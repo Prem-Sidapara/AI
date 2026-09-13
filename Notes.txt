@@ -494,3 +494,8 @@ optimizer.step()
     tensor GPU pe chal sakta hai 
     numpy nahi vo sirf normal CPU ke liye 
 
+
+
+generate_content = ek sawaal , ek jawab - Ai kuch yaad nhi rakhta
+chats.create = conversation -- Ai yaad rakhta hai 
+System instruction = AI ka character define karta hai - same model alag behaviour
