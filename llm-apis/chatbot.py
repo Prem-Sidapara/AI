@@ -16,7 +16,13 @@ def get_client():
         api_key = st.secrets["GEMINI_API_KEY"]
     except:
         api_key = os.getenv("GEMINI_API_KEY")
+    
+    if not api_key:
+        st.error("❌ GEMINI_API_KEY not found. Add it in Streamlit Cloud secrets.")
+        st.stop()
+    
     return genai.Client(api_key=api_key)
+
 
 
 client = get_client()
