@@ -499,3 +499,25 @@ optimizer.step()
 generate_content = ek sawaal , ek jawab - Ai kuch yaad nhi rakhta
 chats.create = conversation -- Ai yaad rakhta hai 
 System instruction = AI ka character define karta hai - same model alag behaviour
+
+
+DAY 8 — Embeddings
+
+Embedding = text ko numbers mein convert karna jisme meaning capture hoti hai
+"car" → [0.2, 0.8, ...] (3072 numbers)
+similar meaning → similar numbers → similar position in space
+
+car - automobile  = 0.830  (same cheez)
+car - vehicle     = 0.869  (broad category)
+car - apple       = 0.623  (bilkul alag)
+
+cosine similarity = 2 embeddings kitni similar hain (0 = alag, 1 = same)
+formula: dot_product / (norm_a * norm_b)
+
+Semantic Search = query ki embedding nikalo → sab documents se compare karo
+→ highest similarity wala document = best match
+
+Use cases:
+- RAG mein relevant documents dhundhna
+- Recommendations
+- "car accident" search karo → "vehicle crash" bhi mile
