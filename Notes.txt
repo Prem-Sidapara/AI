@@ -521,3 +521,33 @@ Use cases:
 - RAG mein relevant documents dhundhna
 - Recommendations
 - "car accident" search karo → "vehicle crash" bhi mile
+
+
+
+
+
+Eiffel Tower, football completely ignored. Sirf relevant documents mile.
+
+Ye 3 cheezein ab complete hain:
+
+✅ Embeddings — text -> numbers
+✅ Cosine similarity — similarity measure
+✅ ChromaDB — store + fast search
+Ye sab mila ke RAG banta hai.
+
+RAG kya hai — 1 line mein
+"LLM ko answer dene se pehle, relevant documents dhundho aur usse context mein do."
+
+Without RAG: LLM ko directly poocho -> sirf training data se jaanta hai, hallucinate karta hai
+
+With RAG:
+
+Documents DB mein store karo (vector DB)
+User ka sawaal aaya -> embedding nikalo
+Similar documents dhundho
+Un documents ko context mein deke LLM se poocho
+LLM accurate answer deta hai
+
+
+
+
